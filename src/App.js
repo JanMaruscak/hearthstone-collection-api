@@ -26,6 +26,7 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <h1 style={{textAlign:"center"}}>Hearthstone Collection API</h1>
       <MetadataProvider value={metadata}>
       <Search />
       <Switch>

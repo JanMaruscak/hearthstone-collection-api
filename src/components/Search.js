@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import Metadata from "../context/Metadata";
 import SelectOptions from "./SelectOptions";
 
-const allowedSelects = {"set": ["constructed","arena"]}
+const allowedSelects = { set: ["constructed", "arena"] };
 
 function Search(props) {
   const [search, setSearch] = useState("");
@@ -15,8 +15,7 @@ function Search(props) {
     let query = "&gameMode=" + document.getElementById("gameMode").value;
     for (const [key, value] of Object.entries(queries)) {
       if (value === "all") continue;
-      if(allowedSelects[key].includes(gameMode))
-      query += `&${key}=${value}`;
+      if (allowedSelects[key].includes(gameMode)) query += `&${key}=${value}`;
     }
     props.history.push({ pathname: "cards", search: search + query });
     e.preventDefault();
@@ -35,6 +34,7 @@ function Search(props) {
           objectName="sets"
           class="constructed"
           queryName="set"
+          prettyName="Set:"
           onValueChange={(name, value) => ChangeQuery(name, value)}
         />
       </React.Fragment>
@@ -50,17 +50,19 @@ function Search(props) {
         onChange={event => setSearch(event.target.value)}
       />
       <div id="details">
-        {/* <SelectOptions objectName="gameModes" queryName="gameMode" onValueChange={(name,value) => ChangeQuery(name,value)}/> */}
-        <select
-          name="gameMode"
-          id="gameMode"
-          value={gameMode}
-          onChange={e => setGameMode(e.target.value)}
-        >
-          <option value="constructed">Standard & Wild Format</option>
-          <option value="battlegrounds">Battlegrounds</option>
-          <option value="arena">Current Arena Cards</option>
-        </select>
+        <div className="dynamicSelect">
+          GameMode:
+          <select
+            name="gameMode"
+            id="gameMode"
+            value={gameMode}
+            onChange={e => setGameMode(e.target.value)}
+          >
+            <option value="constructed">Standard & Wild Format</option>
+            <option value="battlegrounds">Battlegrounds</option>
+            <option value="arena">Current Arena Cards</option>
+          </select>
+        </div>
         {options}
         {/* <SelectOptions
           objectName="sets"

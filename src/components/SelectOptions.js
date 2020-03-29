@@ -18,7 +18,7 @@ function SelectOptions(props) {
   }, []);
   return (
     <div className="dynamicSelect">
-      {props.objectName}
+      {props.prettyName}
       <select
         name={props.objectName}
         id={props.objectName}

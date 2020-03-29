@@ -70,9 +70,6 @@ function Navbar(props) {
   // const classes = useStyles();
   return (
     <nav>
-      <ul>
-        <li></li>
-      </ul>
     </nav>
     // <div className={classes.root}>
     //   <AppBar position="static">
