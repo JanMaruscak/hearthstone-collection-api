@@ -72,6 +72,22 @@ body {
       align-self: center;
 }
 
+.cardInfo .infoLine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  margin-top: 5px;
+}
+
+.cardInfo .infoLine .title {
+  font-weight: bold;
+}
+
+.cardInfo .infoLine .info {
+  padding-left: 5px;
+}
+
 #searchForm {
   display: -webkit-box;
   display: -ms-flexbox;

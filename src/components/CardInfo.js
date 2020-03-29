@@ -31,8 +31,6 @@ function CardInfo(props) {
   }
 
   function GetObjectById(object, id) {
-    if (metadata === null) return;
-    if(metadata.data === null) return;
     for (var i = 0; i < metadata.data[object].length; i++) {
       var obj = metadata.data[object][i];
       if (obj.id === id) {
@@ -41,15 +39,36 @@ function CardInfo(props) {
     }
   }
 
-  if (data == null || metadata == null) return "Nothing found";
+  if (data == null)
+    return "Nothing found";
   return (
     <div className="cardInfo">
       <img src={data.data.image} alt="" />
       <p dangerouslySetInnerHTML={{ __html: data.data.flavorText }}></p>
-  <p>Rarity: {GetObjectById("rarities",data.data.rarityId).name}</p>
-  <p>Type: {GetObjectById("types",data.data.cardTypeId).name}</p>
-  <p>Class: {GetObjectById("classes",data.data.classId).name}</p>
-      <p>Set: {GetObjectById("sets", data.data.cardSetId).name}</p>
+      <div className="infoLine">
+        <div className="title">Rarity:</div>
+        <div className="info">
+          {GetObjectById("rarities", data.data.rarityId).name}
+        </div>
+      </div>
+      <div className="infoLine">
+        <div className="title">Type:</div>
+        <div className="info">
+          {GetObjectById("types", data.data.cardTypeId).name}
+        </div>
+      </div>      
+      <div className="infoLine">
+        <div className="title">Class:</div>
+        <div className="info">
+          {GetObjectById("classes", data.data.classId).name}
+        </div>
+      </div>
+      <div className="infoLine">
+        <div className="title">Set:</div>
+        <div className="info">
+          {GetObjectById("sets", data.data.cardSetId).name}
+        </div>
+      </div>
     </div>
   );
 }

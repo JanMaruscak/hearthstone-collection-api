@@ -41,6 +41,17 @@ body {
   img {
     align-self: center;
   }
+  .infoLine {
+    display: flex;
+    margin: auto;
+    margin-top: 5px;
+    .title {
+      font-weight: bold;
+    }
+    .info {
+      padding-left: 5px;
+    }
+  }
 }
 #searchForm{
   display: flex;

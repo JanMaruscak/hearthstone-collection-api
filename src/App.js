@@ -21,11 +21,13 @@ function App() {
         setMetadata(response);
       });
   }, []);
+  if(metadata == null) return "Nothing found"
+  if(metadata.data == null) return "Nothing found"
   return (
     <Router>
       <Navbar />
-      <Search />
       <MetadataProvider value={metadata}>
+      <Search />
       <Switch>
         <Route path="/cards" exact component={Results} />
         <Route path="/card" exact component={CardInfo} />
