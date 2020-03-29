@@ -13,8 +13,7 @@ function SelectOptions(props) {
   }
   useEffect(() => {
     props.onValueChange(
-      props.queryName,
-      metadata.data[props.objectName][0].slug
+      props.queryName,"all"
     );
   }, []);
   return (
@@ -25,6 +24,7 @@ function SelectOptions(props) {
         id={props.objectName}
         onChange={HandleChange}
       >
+          <option value="all">All</option>
         {metadata.data[props.objectName].map((value, index) => {
           return (
             <option key={index} value={value.slug}>

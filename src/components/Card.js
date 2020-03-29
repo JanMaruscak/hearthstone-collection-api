@@ -9,10 +9,17 @@ function SimpleCard(props) {
 
   }
 
+  let image = props.card.image
+  if(props.card.imageGold !== "" && props.card.image === ""){
+    image = props.card.imageGold
+  }
+  if(props.card.battlegrounds != null){
+    image = props.card.battlegrounds.image
+  }
   return (
     <div className="card" onClick={e => ShowCardInfo(e)}>
       {/* <h2>{props.card.name}</h2> */}
-      <img src={props.card.image} alt=""/>
+      <img src={image} alt=""/>
     </div>
   );
 }

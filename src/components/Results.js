@@ -19,7 +19,7 @@ function Results(props) {
         `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&textFilter=${props.location.search.substring(1)}&access_token=USqkDWiIPnR79anLFiUtCAK8mkSanS68zL`
       )
       .then(response => {
-        // console.log(response);
+        console.log(response);
         setData(response);
       });
   }
