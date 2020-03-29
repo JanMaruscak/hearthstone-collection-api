@@ -6,6 +6,9 @@
 body {
   margin: 0px;
   font-family: "Roboto", sans-serif;
+  background-color: #2f3542;
+  color: white;
+  padding-bottom: 50px;
 }
 .results {
   display: flex;
@@ -34,17 +37,21 @@ body {
   flex-direction: column;
   width: 800px;
   margin: auto;
-  padding: 20px;
-  h2,p{
+  padding: 25px;
+  margin-top: 20px;
+  background-color: #20252e;
+  p{
       text-align: center;
+      font-size: 26px;
   }
   img {
     align-self: center;
   }
   .infoLine {
     display: flex;
-    margin: auto;
+    margin-left: 0;
     margin-top: 5px;
+    font-size: 22px;
     .title {
       font-weight: bold;
     }
@@ -73,5 +80,20 @@ body {
     margin-top: 10px;
     cursor: pointer;
   }
+  #details{
+    margin: auto;
+    .dynamicSelect{
+      margin: auto;
+    }
+  }
+}
+#background{
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  user-select: none;
 }
 @import "./mobile";

@@ -12,23 +12,23 @@ function Results(props) {
     setOldQuery(props.location.search.substring(1));
   }
   function CallApi() {
+    console.log(`https://us.api.blizzard.com/hearthstone/cards?locale=en_US&textFilter=${props.location.search.substring(1)}&access_token=USqkDWiIPnR79anLFiUtCAK8mkSanS68zL`);
+    
     axios
       .get(
-        `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&textFilter=${props.location.search.substring(
-          1
-        )}&access_token=USqkDWiIPnR79anLFiUtCAK8mkSanS68zL`
+        `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&textFilter=${props.location.search.substring(1)}&access_token=USqkDWiIPnR79anLFiUtCAK8mkSanS68zL`
       )
       .then(response => {
-        console.log(response);
+        // console.log(response);
         setData(response);
       });
   }
+  if(data == null) return "Nothing found"
 
-  if (data == null) return "Nothing found";
   return (
     <div className="results">
       {data.data.cards.map(function(d, idx) {
-        return <Card key={idx} card={d} />;
+        return <Card key={idx} card={d}/>;
       })}
     </div>
   );

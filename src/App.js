@@ -17,7 +17,7 @@ function App() {
     axios
       .get("https://us.api.blizzard.com/hearthstone/metadata?locale=en_US&access_token=USqkDWiIPnR79anLFiUtCAK8mkSanS68zL")
       .then(response => {
-        console.log(response);
+        // console.log(response);
         setMetadata(response);
       });
   }, []);
