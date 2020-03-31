@@ -23,8 +23,8 @@ body {
   flex-direction: column;
   background-color: #20252e;
   margin: 15px;
-  cursor: pointer;
   width: 300px;
+  position: relative;
   transition: all 0.3s ease-in-out;
   &.animateJumpIn {
     animation: resultJumpIn 0.5s;
@@ -33,7 +33,20 @@ body {
     transform: scale(1.1);
   }
   img {
+    margin-top: 10px;
+    cursor: pointer;
     width: 90%;
+    user-select: none;
+  }
+  p {
+    font-style: italic;
+    color: #434954;
+    position: absolute;
+    top: 0;
+    right: 5%;
+  }
+  h2 {
+    margin-top: 15px;
   }
 }
 .cardImg {
@@ -44,20 +57,36 @@ body {
   flex-direction: column;
   width: 800px;
   margin: auto;
-  padding: 25px;
+  padding: 35px;
+  padding-top: 5px;
   margin-top: 20px;
   background-color: #20252e;
+  position: relative;
   p {
     text-align: center;
+  }
+  .text {
     font-size: 24px;
+    margin-top: 0;
+  }
+  .flavor {
+    font-style: italic;
   }
   h2 {
     text-align: center;
     font-size: 36px;
     margin-bottom: 0;
   }
+  .id {
+    font-style: italic;
+    color: #434954;
+    position: absolute;
+    top: 0;
+    right: 5%;
+  }
   img {
     align-self: center;
+    max-width: 90%;
   }
   .infoLine {
     display: flex;
@@ -72,16 +101,28 @@ body {
     }
   }
 }
+#backButton {
+  position: absolute;
+  left: 2%;
+  top: 1%;
+  width: 10%;
+  cursor: pointer;
+}
 #searchForm {
   display: flex;
   flex-direction: column;
   margin: auto;
   margin-bottom: 20px;
   .searchInput {
-    width: 300px;
+    width: 350px;
     margin: auto;
     font-size: 22px;
     padding: 5px 10px;
+    background-color: #20252e;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0px 0px 5px 0px rgba(79, 75, 79, 0.5);
   }
   .searchButton {
     background-color: #20252e;
@@ -95,12 +136,26 @@ body {
   }
   #details {
     margin: auto;
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 350px;
+
     .dynamicSelect {
       margin-left: 0;
       margin-top: 5px;
+      font-size: 16px;
+      display: flex;
+      select {
+        min-width: 70%;
+        background-color: #20252e;
+        border: 0;
+        border-radius: 2.5px;
+        color: white;
+        box-shadow: 0px 0px 5px 0px rgba(79, 75, 79, 0.5);
+        font-size: 16px;
+      }
+      justify-content: space-between;
     }
   }
 }

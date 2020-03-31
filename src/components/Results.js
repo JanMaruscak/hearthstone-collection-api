@@ -9,9 +9,7 @@ var history = "";
 function Results(props) {
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    CallApi();
-  }, []);
+
   function CallApi() {
     axios
       .get(
@@ -24,6 +22,9 @@ function Results(props) {
         setData(response);
       });
   }
+  useEffect(() => {
+    CallApi();
+  }, []);
 
   if (props.location !== history || history === "") {
     CallApi();

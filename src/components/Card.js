@@ -7,7 +7,6 @@ function SimpleCard(props) {
   function ShowCardInfo(e){    
     props.history.push({ pathname: "card", search: props.card.id.toString()});
     e.preventDefault()
-
   }
 
   let image = props.card.image
@@ -21,8 +20,9 @@ function SimpleCard(props) {
     image = ImageNotFound
   }
   return (
-    <div className="card animateJumpIn" onClick={e => ShowCardInfo(e)}>
-      <img src={image} alt=""/>
+    <div className="card animateJumpIn" >
+      <img src={image} alt={props.card.name + " image"}onClick={e => ShowCardInfo(e)}/>
+      <p>{props.card.id}</p>
       <h2>{props.card.name}</h2>
     </div>
   );

@@ -1,17 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Metadata from "../context/Metadata";
 import Loading from "./Loading";
-import ImageNotFound from '../images/no-image.png'
+import ImageNotFound from "../images/no-image.png";
+import BackButtonImage from "../images/back-arrow.svg";
 const axios = require("axios");
+var history = "";
 
 function CardInfo(props) {
   const [data, setData] = useState(null);
-  const [oldQuery, setOldQuery] = useState("");
   const metadata = useContext(Metadata);
 
-  if (props.location.search.substring(1) !== oldQuery) {
-    setOldQuery(props.location.search.substring(1));
+  useEffect(() => {
     CallApi();
+  }, []);
+  if (props.location !== history || history === "") {
+    CallApi();
+    history = props.location;
   }
   function CallApi() {
     axios
@@ -43,15 +47,30 @@ function CardInfo(props) {
   if (data.data.battlegrounds != null) {
     image = data.data.battlegrounds.image;
   }
-  if(image.trim() === ""){
-    image = ImageNotFound
+
+  if (image.trim() === "") {
+    image = ImageNotFound;
   }
 
   return (
     <div className="cardInfo">
-      <img src={image} alt="" />
+      <img
+        id="backButton"
+        src={BackButtonImage}
+        onClick={props.history.goBack}
+        alt="backButton"
+      />
+      <p className="id">{data.data.id}</p>
+      <img src={image} alt={data.data.name + " image"} />
       <h2>{data.data.name}</h2>
-      <p dangerouslySetInnerHTML={{ __html: data.data.flavorText }}></p>
+      <p
+        className="flavor"
+        dangerouslySetInnerHTML={{ __html: data.data.flavorText }}
+      ></p>
+      <p
+        className="text"
+        dangerouslySetInnerHTML={{ __html: data.data.text }}
+      ></p>
       <div className="infoLine">
         <div className="title">Rarity:</div>
         <div className="info">

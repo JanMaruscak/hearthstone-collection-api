@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 function Pagination(props) {
   let elements = [];
   let increment = 0;
-  console.log(props.pageCount);
   
   if (props.selected > 7) {
     // while (increment < props.selected + 1) {
@@ -30,13 +29,11 @@ function Pagination(props) {
   }
   function HandleClick(e, i) {
     if (i < 1 || i > props.pageCount) return;
-    console.log(props.location);
     let splitLoc = props.location.search.split("&");
     let newUrl = "";
     var foundPage = false;
     splitLoc.forEach(element => {
       let lineSplit = element.split("=");
-      console.log(lineSplit);
       if (lineSplit[0] === "page") {
         element = `page=${i}`;
         foundPage = true;
@@ -49,7 +46,6 @@ function Pagination(props) {
     if (newUrl[newUrl.length - 1] === "&") {
       newUrl = newUrl.substring(0, newUrl.length - 1);
     }
-    console.log(newUrl);
 
     props.history.push({ pathname: "cards", search: newUrl });
 
