@@ -39,9 +39,22 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 10px;
+  background-color: #20252e;
+  margin: 15px;
   cursor: pointer;
   width: 300px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.card.animateJumpIn {
+  -webkit-animation: resultJumpIn 0.5s;
+          animation: resultJumpIn 0.5s;
+}
+
+.card:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .card img {
@@ -110,6 +123,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: auto;
+  margin-bottom: 20px;
 }
 
 #searchForm .searchInput {
@@ -160,6 +174,29 @@ body {
           user-select: none;
 }
 
+.pagination {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pagination .page {
+  margin: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.pagination .page.selected {
+  color: red;
+}
+
 .lds-dual-ring {
   display: block;
   width: 80px;
@@ -201,6 +238,52 @@ body {
   100% {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes resultJumpIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+  }
+  70% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+  85% {
+    -webkit-transform: scale(0.98);
+            transform: scale(0.98);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes resultJumpIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+  }
+  70% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+  85% {
+    -webkit-transform: scale(0.98);
+            transform: scale(0.98);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 

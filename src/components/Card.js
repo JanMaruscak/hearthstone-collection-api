@@ -21,7 +21,7 @@ function SimpleCard(props) {
     image = ImageNotFound
   }
   return (
-    <div className="card" onClick={e => ShowCardInfo(e)}>
+    <div className="card animateJumpIn" onClick={e => ShowCardInfo(e)}>
       <img src={image} alt=""/>
       <h2>{props.card.name}</h2>
     </div>

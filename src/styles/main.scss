@@ -21,11 +21,18 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  // background-color: gray;
-  margin: 10px;
+  background-color: #20252e;
+  margin: 15px;
   cursor: pointer;
   width: 300px;
-  img{
+  transition: all 0.3s ease-in-out;
+  &.animateJumpIn {
+    animation: resultJumpIn 0.5s;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+  img {
     width: 90%;
   }
 }
@@ -40,11 +47,11 @@ body {
   padding: 25px;
   margin-top: 20px;
   background-color: #20252e;
-  p{
-      text-align: center;
-      font-size: 24px;
+  p {
+    text-align: center;
+    font-size: 24px;
   }
-  h2{
+  h2 {
     text-align: center;
     font-size: 36px;
     margin-bottom: 0;
@@ -65,17 +72,18 @@ body {
     }
   }
 }
-#searchForm{
+#searchForm {
   display: flex;
   flex-direction: column;
   margin: auto;
-  .searchInput{
+  margin-bottom: 20px;
+  .searchInput {
     width: 300px;
     margin: auto;
     font-size: 22px;
     padding: 5px 10px;
   }
-  .searchButton{
+  .searchButton {
     background-color: #20252e;
     color: white;
     border: 0;
@@ -85,18 +93,18 @@ body {
     margin-top: 10px;
     cursor: pointer;
   }
-  #details{
+  #details {
     margin: auto;
     display: flex;
     flex-direction: column;
     width: 300px;
-    .dynamicSelect{
+    .dynamicSelect {
       margin-left: 0;
       margin-top: 5px;
     }
   }
 }
-#background{
+#background {
   position: absolute;
   height: 100vh;
   width: 100vw;
@@ -104,6 +112,21 @@ body {
   top: 0;
   z-index: -1;
   user-select: none;
+}
+
+.pagination {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .page {
+    margin: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    &.selected {
+      color: red;
+    }
+  }
 }
 
 .lds-dual-ring {
@@ -131,6 +154,24 @@ body {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@keyframes resultJumpIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  85% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 @import "./mobile";

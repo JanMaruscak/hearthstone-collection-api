@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "./Card";
 import Loading from "./Loading";
 import { useEffect } from "react";
+import Pagination from "./Pagination";
 const axios = require("axios");
 var history = "";
 
@@ -19,6 +20,7 @@ function Results(props) {
         )}&access_token=${props.token}`
       )
       .then(response => {
+        setData(null);
         setData(response);
       });
   }
@@ -27,15 +29,18 @@ function Results(props) {
     CallApi();
     history = props.location;
   }
-  
-  if (data == null) return <Loading />;
+
+  if (data == null || data.data.cards == null) return <Loading />;
 
   return (
-    <div className="results">
-      {data.data.cards.map(function(d, idx) {
-        return <Card key={idx} card={d} />;
-      })}
-    </div>
+    <>
+      <div className="results">
+        {data.data.cards.map(function(d, idx) {
+          return <Card key={idx + data.data.page} card={d} />;
+        })}
+      </div>
+      <Pagination pageCount={data.data.pageCount} selected={data.data.page} />
+    </>
   );
 }
 
