@@ -14,12 +14,6 @@ function CardInfo(props) {
     CallApi();
   }
   function CallApi() {
-    console.log(
-      `https://us.api.blizzard.com/hearthstone/cards/${props.location.search.substring(
-        1
-      )}?locale=en_US&access_token=${props.token}`
-    );
-
     axios
       .get(
         `https://us.api.blizzard.com/hearthstone/cards/${props.location.search.substring(
@@ -27,7 +21,6 @@ function CardInfo(props) {
         )}?locale=en_US&access_token=${props.token}`
       )
       .then(response => {
-        console.log(response);
         setData(response);
       });
   }
@@ -50,7 +43,7 @@ function CardInfo(props) {
   if (data.data.battlegrounds != null) {
     image = data.data.battlegrounds.image;
   }
-  if(image == null){
+  if(image.trim() === ""){
     image = ImageNotFound
   }
 

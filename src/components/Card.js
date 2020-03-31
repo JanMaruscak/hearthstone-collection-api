@@ -16,8 +16,8 @@ function SimpleCard(props) {
   }
   if(props.card.battlegrounds != null){
     image = props.card.battlegrounds.image
-  }
-  if(image == null){
+  }  
+  if(image.trim() === ""){
     image = ImageNotFound
   }
   return (
