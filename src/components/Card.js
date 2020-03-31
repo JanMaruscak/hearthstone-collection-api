@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
+import ImageNotFound from '../images/no-image.png'
 
 
 function SimpleCard(props) {
@@ -16,10 +17,13 @@ function SimpleCard(props) {
   if(props.card.battlegrounds != null){
     image = props.card.battlegrounds.image
   }
+  if(image == null){
+    image = ImageNotFound
+  }
   return (
     <div className="card" onClick={e => ShowCardInfo(e)}>
-      {/* <h2>{props.card.name}</h2> */}
       <img src={image} alt=""/>
+      <h2>{props.card.name}</h2>
     </div>
   );
 }

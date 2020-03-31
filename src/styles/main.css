@@ -69,7 +69,13 @@ body {
 
 .cardInfo p {
   text-align: center;
-  font-size: 26px;
+  font-size: 24px;
+}
+
+.cardInfo h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 0;
 }
 
 .cardInfo img {
@@ -152,6 +158,50 @@ body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.lds-dual-ring {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin-top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  -webkit-animation: lds-dual-ring 1.2s linear infinite;
+          animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@-webkit-keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 @media only screen and (max-width: 820px) {

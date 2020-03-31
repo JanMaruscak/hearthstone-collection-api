@@ -1,14 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-import Metadata from "../context/Metadata";
+// import Metadata from "../context/Metadata";
 import SelectOptions from "./SelectOptions";
 
 const allowedSelects = { set: ["constructed", "arena"] };
 
 function Search(props) {
   const [search, setSearch] = useState("");
-  const metadata = useContext(Metadata);
-  const [queries, setQueries] = useState({});
+  // const metadata = useContext(Metadata);
+  const [queries] = useState({});
   const [gameMode, setGameMode] = useState("constructed");
 
   function Redir(e) {
@@ -21,13 +21,10 @@ function Search(props) {
     e.preventDefault();
   }
   function ChangeQuery(name, value) {
-    // let newQueries = [...queries]
     queries[name] = value;
-    // setQueries(newQueries)
-    console.log(queries);
   }
   let options = <React.Fragment></React.Fragment>;
-  if (gameMode === "constructed") {
+  if (gameMode === "constructed" || gameMode === "arena" ) {
     options = (
       <React.Fragment>
         <SelectOptions

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 function SelectOptions(props) {
   const metadata = useContext(Metadata);
-  console.log(metadata.data[props.objectName]);
+  // console.log(metadata.data[props.objectName]);
   function HandleChange() {
     props.onValueChange(
       props.queryName,
@@ -12,9 +12,7 @@ function SelectOptions(props) {
     );
   }
   useEffect(() => {
-    props.onValueChange(
-      props.queryName,"all"
-    );
+    props.onValueChange(props.queryName, "all");
   }, []);
   return (
     <div className="dynamicSelect">
@@ -24,7 +22,7 @@ function SelectOptions(props) {
         id={props.objectName}
         onChange={HandleChange}
       >
-          <option value="all">All</option>
+        <option value="all">All</option>
         {metadata.data[props.objectName].map((value, index) => {
           return (
             <option key={index} value={value.slug}>

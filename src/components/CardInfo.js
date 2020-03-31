@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
 import Metadata from "../context/Metadata";
+import Loading from "./Loading";
+import ImageNotFound from '../images/no-image.png'
 const axios = require("axios");
 
 function CardInfo(props) {
@@ -15,14 +17,14 @@ function CardInfo(props) {
     console.log(
       `https://us.api.blizzard.com/hearthstone/cards/${props.location.search.substring(
         1
-      )}?locale=en_US&access_token=USqkDWiIPnR79anLFiUtCAK8mkSanS68zL`
+      )}?locale=en_US&access_token=${props.token}`
     );
 
     axios
       .get(
         `https://us.api.blizzard.com/hearthstone/cards/${props.location.search.substring(
           1
-        )}?locale=en_US&access_token=USqkDWiIPnR79anLFiUtCAK8mkSanS68zL`
+        )}?locale=en_US&access_token=${props.token}`
       )
       .then(response => {
         console.log(response);
@@ -31,7 +33,7 @@ function CardInfo(props) {
   }
 
   function GetObjectById(object, id) {
-    if(metadata.data[object] == null ) return "Not found."
+    if (metadata.data[object] == null) return "Not found.";
     for (var i = 0; i < metadata.data[object].length; i++) {
       var obj = metadata.data[object][i];
       if (obj.id === id) {
@@ -40,11 +42,22 @@ function CardInfo(props) {
     }
   }
 
-  if (data == null)
-    return "Nothing found";
+  if (data == null) return <Loading />;
+  let image = data.data.image;
+  if (data.data.imageGold !== "" && data.data.image === "") {
+    image = data.data.imageGold;
+  }
+  if (data.data.battlegrounds != null) {
+    image = data.data.battlegrounds.image;
+  }
+  if(image == null){
+    image = ImageNotFound
+  }
+
   return (
     <div className="cardInfo">
-      <img src={data.data.image} alt="" />
+      <img src={image} alt="" />
+      <h2>{data.data.name}</h2>
       <p dangerouslySetInnerHTML={{ __html: data.data.flavorText }}></p>
       <div className="infoLine">
         <div className="title">Rarity:</div>
@@ -57,7 +70,7 @@ function CardInfo(props) {
         <div className="info">
           {GetObjectById("types", data.data.cardTypeId)}
         </div>
-      </div>      
+      </div>
       <div className="infoLine">
         <div className="title">Class:</div>
         <div className="info">
@@ -66,9 +79,7 @@ function CardInfo(props) {
       </div>
       <div className="infoLine">
         <div className="title">Set:</div>
-        <div className="info">
-          {GetObjectById("sets", data.data.cardSetId)}
-        </div>
+        <div className="info">{GetObjectById("sets", data.data.cardSetId)}</div>
       </div>
     </div>
   );

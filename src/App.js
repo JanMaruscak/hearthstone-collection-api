@@ -7,33 +7,44 @@ import CardInfo from "./components/CardInfo";
 import Search from "./components/Search";
 import { useEffect } from "react";
 import { useState } from "react";
-import {MetadataProvider} from "./context/Metadata"
+import { MetadataProvider } from "./context/Metadata";
+import Loading from './components/Loading'
 const axios = require("axios");
 // const base = "https://us.api.blizzard.com/hearthstone/";
+const token = "USYc7BmMd3Xj4xieyDBpaFdHmWT2Wdn9FP";
 
 function App() {
   const [metadata, setMetadata] = useState([]);
   useEffect(() => {
     axios
-      .get("https://us.api.blizzard.com/hearthstone/metadata?locale=en_US&access_token=USqkDWiIPnR79anLFiUtCAK8mkSanS68zL")
+      .get(
+        `https://us.api.blizzard.com/hearthstone/metadata?locale=en_US&access_token=${token}`
+      )
       .then(response => {
-        // console.log(response);
         setMetadata(response);
       });
   }, []);
-  if(metadata == null) return "Nothing found"
-  if(metadata.data == null) return "Nothing found"
+  if (metadata == null) return <Loading/>
+  if (metadata.data == null) return <Loading/>
   return (
     <Router>
       <Navbar />
-      <h1 style={{textAlign:"center"}}>Hearthstone Collection API</h1>
+      <h1 style={{ textAlign: "center" }}>Hearthstone Collection API</h1>
       <MetadataProvider value={metadata}>
-      <Search />
-      <Switch>
-        <Route path="/cards" exact component={Results} />
-        <Route path="/card" exact component={CardInfo} />
-      </Switch>
-      </MetadataProvider >
+        <Search />
+        <Switch>
+          <Route
+            path="/cards"
+            exact
+            render={props => <Results {...props} token={token} />}
+          />
+          <Route
+            path="/card"
+            exact
+            render={props => <CardInfo {...props} token={token} />}
+          />
+        </Switch>
+      </MetadataProvider>
     </Router>
   );
 }
