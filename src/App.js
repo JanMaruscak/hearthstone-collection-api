@@ -11,7 +11,7 @@ import { MetadataProvider } from "./context/Metadata";
 import Loading from './components/Loading'
 const axios = require("axios");
 // const base = "https://us.api.blizzard.com/hearthstone/";
-const token = "USlKCrPnerjPuIU798K98zYobB8yAJBYkQ";
+const token = "USmlASUmyD5jXcngS9tCBGykEf3dQl3411";
 
 function App() {
   const [metadata, setMetadata] = useState([]);
